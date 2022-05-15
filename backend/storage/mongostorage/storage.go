@@ -77,7 +77,7 @@ func (s *storage) GetProduct(ctx context.Context, id string) (storage2.Product, 
 }
 
 func (s *storage) List(ctx context.Context) ([]storage2.Product, error) {
-	var allProducts []storage2.Product
+	allProducts := []storage2.Product{}
 	var product storage2.Product
 	opts := options.Find()
 	var cursor *mongo.Cursor

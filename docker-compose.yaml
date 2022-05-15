@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  database:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+
+  backend:
+    build: backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      MONGO_URL: 'mongodb://database:27017'
+
+  frontend:
+    container_name: frontend
+    build: frontend
+    depends_on:
+      - backend
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    ports:
+      - "3000:3000"
+    stdin_open: true
