@@ -9,7 +9,6 @@ services:
       - database
     environment:
       MONGO_URL: 'mongodb://database:27017'
-      REDIS_URL: 'cache:6379'
 
   database:
     image: mongo:4.4
